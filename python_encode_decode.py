@@ -52,7 +52,6 @@ def mode(private_key, text, choice):
 def main():
 
     text = input('Enter a message: ')
-    #Determnines the length of the encoded message
     private_key = input('Enter a private key to use: ')
     choice = input('Mode (Encode or Decode): ')
 
