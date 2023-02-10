@@ -15,8 +15,8 @@ def encode(key, message):
     encode() returns a utf-8 encoded message, decode() will decode the string"""
 
     for i in range(len(message)):
-        key_charshars = key[i % len(key)]
-        encoded.append(chr((ord(message[i]) + ord(key_charshars)) % 256))
+        key_chars = key[i % len(key)]
+        encoded.append(chr((ord(message[i]) + ord(key_chars)) % 256))
 
     return base64.urlsafe_b64encode("".join(encoded).encode()).decode()
 
