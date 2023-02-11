@@ -38,26 +38,34 @@ def decode(key, message):
     return "".join(decoded)
 
 
-def mode(private_key, text, choice):
+def mode(choice):
     """Set mode"""
 
     if choice.lower() == 'e' or choice.lower() == 'encode':
+        text,private_key = get_message_and_pk()
         result = encode(private_key, text)
         print(f'\nEncoded message: {result}')
     elif choice.lower() == 'd' or choice.lower() == 'decode':
-        result = decode(private_key, text)
+        private_key,encryption_message=get_encrypted_message()
+        result = decode(private_key, encryption_message)
         print(f'\nDecoded message: {result}')
     else:
         print('\nInvalid Mode!\n')
 
+def get_message_and_pk():
+    text = input('Enter a message: ')
+    private_key = input('Enter a private key to use: ')
+    return text,private_key
+
+def get_encrypted_message():
+    private_key = input('Enter a private key: ')
+    encryption_message = input("Input encyption message")    
+    return private_key,encryption_message
 
 def main():
 
-    text = input('Enter a message: ')
-    private_key = input('Enter a private key to use: ')
     choice = input('Mode (Encode or Decode): ')
-
-    mode(private_key, text, choice)
+    mode(choice)
 
 
 if __name__ == '__main__':
